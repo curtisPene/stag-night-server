@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Stag Admin</title>
+  </head>
+  <body>
+    <div class="controls">
+      <button class="button-17" name="manaCoffee">Mana</button>
+      <button class="button-17" name="preve">Prive</button>
+      <button class="button-17" name="hideNSeek">Hide N Seek</button>
+      <button class="button-17" name="friends">Friends</button>
+      <button class="button-17" name="hillTopTavern">Hilltop Tavern</button>
+      <button class="button-17" name="downUnder">Down Under</button>
+      <button class="button-17" name="oReillys">O'Reillys</button>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      const buttons = document.querySelectorAll("button");
+      console.log(buttons);
+      buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          socket.emit("change_location", { flyTo: e.target.name });
+        });
+      });
+    </script>
+  </body>
+</html>
