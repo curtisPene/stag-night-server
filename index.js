@@ -26,6 +26,7 @@ app.get("/admin", (req, res) => {
 io.on("connection", (socket) => {
   console.log(`User connected ${socket.id}`);
   socket.on("change_location", (data) => {
+    console.log("Change location");
     socket.broadcast.emit("change_location", data);
   });
 });
